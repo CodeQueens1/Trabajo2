@@ -5,6 +5,10 @@ import { AuthService } from 'src/app/services/auth.service';
 import { LanguageComponent } from 'src/app/components/language/language.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { IonicModule } from '@ionic/angular';
+import { ViewWillEnter } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { colorWandOutline } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-ingreso',
@@ -12,11 +16,11 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['./ingreso.page.scss'],
   standalone: true,
   imports: [
-            IonicModule,  
-            CommonModule, FormsModule,
-            //usados
-            LanguageComponent
-          , TranslateModule ]
+    CommonModule            // CGV-Permite usar directivas comunes de Angular
+    , FormsModule             // CGV-Permite usar formularios
+    , IonicModule             // CGV-Permite usar componentes de Ionic como IonContent, IonItem, etc.
+    , TranslateModule         // CGV-Permite usar pipe 'translate'
+    , LanguageComponent ]
 })
 export class IngresoPage implements OnInit {
 
@@ -26,7 +30,7 @@ export class IngresoPage implements OnInit {
   @ViewChild('selectLanguage') selectLanguage!: LanguageComponent;
 
   constructor(private authService: AuthService //inyectar servicio de autenticación
-              , private translate: TranslateService
+              , private translate: TranslateService, private router: Router
   ) { }
 
   ngOnInit() {
@@ -40,6 +44,10 @@ export class IngresoPage implements OnInit {
 
   async ionViewWillEnter() {
     this.selectLanguage.setCurrentLanguage();
+  }
+
+  navigateTheme() {
+    this.router.navigate(['/theme']);
   }
 
 }

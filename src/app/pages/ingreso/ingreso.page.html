@@ -1,11 +1,23 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Asistencia DUOC</ion-title>
-  </ion-toolbar>
+<ion-header>
+  <ion-toolbar class="transparent-bg">
+    <div slot="start" class="ion-margin">
+      <app-language #selectLanguage></app-language>
+    </div>
+    <div class="show-in-landscape">
+      <h1 class="glow-text"> {{ 'AppName' | translate }} </h1>
+    </div>
+    <div slot="end" class="ion-margin">
+      <ion-button shape="round" size="small" (click)="navigateTheme()">
+        Tema
+        <ion-icon slot="start" name="color-wand-outline"></ion-icon>
+      </ion-button>
+    </div>
+   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-
+  
+  
   <h4>Inicio de Sesión</h4>
 
   <ion-card class="transparent-input text-center">
