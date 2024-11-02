@@ -85,8 +85,8 @@ usuarioAutenticado = new BehaviorSubject<Usuario | null>(null);
         showToast(`¡Hasta pronto ${usuario.nombre} ${usuario.apellido}!`);
         this.eliminarUsuarioAutenticado(usuario);
       }
-      this.router.navigate(['/ingresoi']);
-    })
+      this.router.navigate(['/ingreso']); // Cambia '/ingresoi' a '/ingreso' si es necesario
+    });
   }
 
 }

@@ -12,10 +12,10 @@ export class APIClientService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
+      'Content-Type': 'application/json'
     })
   };
+  
 
   // Variable reactiva que almacenará la lista de publicaciones
   listaPublicaciones: BehaviorSubject<Publicacion[]> = new BehaviorSubject<Publicacion[]>([]);
