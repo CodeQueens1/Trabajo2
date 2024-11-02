@@ -1,0 +1,63 @@
+<p>
+  miclase works!
+</p>
+
+<ion-card>
+  <ion-card-content class="borde">
+    <!-- <h1 *ngIf="!usuario.asistencia.idAsignatura">
+      Asistencia sin información
+    </h1> -->
+    <!-- <ion-card *ngIf="usuario.asistencia.idAsignatura"> -->
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">Datos de la Asignatura:</ion-card-title>
+        <br>
+      </ion-card-header>
+      <ion-card-content>
+        <table>
+          <tbody>
+            <tr>
+              <td>Sede</td>
+              <td>{{ miclase.sede }}</td>
+            </tr>
+            <tr>
+              <td>ID Asignatura</td>
+              <td>{{ miclase.idAsignatura }}</td>
+            </tr>
+            <tr>
+              <td>Sección</td>
+              <td>{{ miclase.seccion }}</td>
+            </tr>
+            <tr>
+              <td>Nombre Asignatura</td>
+              <td>{{ miclase.nombreAsignatura }}</td>
+            </tr>
+            <tr>
+              <td>Nombre Profesor</td>
+              <td>{{ miclase.nombreProfesor }}</td>
+            </tr>
+            <tr>
+              <td>Día</td>
+              <td>{{ miclase.dia }}</td>
+            </tr>
+            <tr>
+              <td>Bloque Inicio</td>
+              <td>{{ miclase.bloqueInicio }}</td>
+            </tr>
+            <tr>
+              <td>Bloque Término</td>
+              <td>{{ miclase.bloqueTermino }}</td>
+            </tr>
+            <tr>
+              <td>Hora Inicio</td>
+              <td>{{ miclase.horaInicio }}</td>
+            </tr>
+            <tr>
+              <td>Hora Fin</td>
+              <td>{{ miclase.horaFin }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </ion-card-content>
+    <!-- </ion-card> -->
+  </ion-card-content>
+</ion-card>

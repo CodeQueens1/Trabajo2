@@ -1,0 +1,33 @@
+<ion-footer>
+  <ion-toolbar>
+    {{ componenteSeleccionado }}
+
+    <ion-segment value="codigoqr" 
+    [(ngModel)]="componenteSeleccionado"  
+    (ionChange)="cambiarComponente(componenteSeleccionado)">
+<!--componente que se esta utilizando y evento que se realizara cuando se apriete el boton -->
+   
+
+    <ion-segment-button value="codigoqr">
+      <ion-icon name="home-outline"></ion-icon>
+      Inicio
+    </ion-segment-button>
+
+    <ion-segment-button value="miclase">
+      <ion-icon name="school-outline"></ion-icon>
+      Mi clase
+    </ion-segment-button>
+
+    <ion-segment-button value="foro">
+      <ion-icon name="pencil-outline"></ion-icon>
+      Foro
+    </ion-segment-button>
+
+    <ion-segment-button value="misdatos">
+      <ion-icon name="grid-outline"></ion-icon>
+      Mis datos
+    </ion-segment-button>
+
+  </ion-segment>
+  </ion-toolbar>
+</ion-footer>

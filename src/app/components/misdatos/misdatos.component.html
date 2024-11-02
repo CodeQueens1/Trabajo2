@@ -1,0 +1,76 @@
+<p>
+  misdatos works!
+</p>
+</div>
+<div class="book">
+  <ion-content [fullscreen]="true" class="ion-padding-horizontal page">
+    <ion-toolbar class="ion-padding-top">
+      <h1 class="ion-text-center"></h1>
+    </ion-toolbar>
+
+    <ion-toolbar>
+      <h4 class="ion-text-center">Información Adicional</h4>
+    </ion-toolbar>
+
+    <ion-item #itemCuenta>
+      <ion-input [(ngModel)]="usuario.cuenta" label="Cuenta" labelPlacement="floating" placeholder="Ej: atorres"></ion-input>
+    </ion-item>
+
+    <ion-item #itemNombre>
+      <ion-input [(ngModel)]="usuario.nombre" label="Nombre" labelPlacement="floating" placeholder="Ej: Ana"></ion-input>
+    </ion-item>
+
+    <ion-item #itemApellido>
+      <ion-input [(ngModel)]="usuario.apellido" label="Apellido" labelPlacement="floating" placeholder="Ej: Torres"></ion-input>
+    </ion-item>
+
+    <ion-item #itemCorreo>
+      <ion-input [(ngModel)]="usuario.correo" label="Correo" labelPlacement="floating" placeholder="Ej: Torres"></ion-input>
+    </ion-item>
+
+    <ion-item #itemPreguntaSecreta>
+      <ion-input [(ngModel)]="usuario.preguntaSecreta" label="Pregunta Secreta" placeholder="Ej: Torres"></ion-input>
+    </ion-item>
+
+    <ion-item #itemEducacion>
+      <ion-label position="floating" class="font-size-16">Educación</ion-label>
+      <ion-select placeholder="Seleccione nivel" [(ngModel)]="usuario.nivelEducacional!.id">
+        <ion-select-option *ngFor="let nivelEducacional of listaNivelesEducacionales" [value]="nivelEducacional.id">
+          {{nivelEducacional.nombre}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item #itemFechaNacimiento>
+      <table>
+        <tr>
+          <td class="font-size 12">Nacimiento</td>
+          <td class="cell-align-right">
+            <input matInput [matDatepicker]="fechaNacimiento" [(ngModel)]="usuario.fechaNacimiento" placeholder="ej: dd/mm/yyyy" class="date-width">
+          </td>
+          <td class="cell-width-0">
+            <mat-datepicker-toggle matSuffix [for]="fechaNacimiento"></mat-datepicker-toggle>
+            <mat-datepicker #fechaNacimiento></mat-datepicker>
+          </td>
+        </tr>
+      </table>
+    </ion-item>
+
+    <ion-item #itemPreguntaSecreta>
+      <ion-input [(ngModel)]="usuario.password" label="Contraseña" labelPlacement="floating" type="password"></ion-input>
+    </ion-item>
+
+    <ion-button shape="round" size="small" (click)="actualizarUsuario()">
+      Actualizar usuario
+    </ion-button>
+
+
+    <ion-button shape="round" size="small" (click)="navegar('/inicio')">
+    inicio
+    </ion-button>
+  </ion-content>
+
+</div>
+
+
+</ion-app>
