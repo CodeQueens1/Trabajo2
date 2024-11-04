@@ -1,8 +1,8 @@
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { ingresoGuard } from './guards/ingreso-guard.service';
 import { inicioGuard } from './guards/inicio-guard.service';
 import { ForoComponent } from './components/foro/foro.component';
-
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
   {

@@ -21,7 +21,7 @@ export class APIClientService {
   listaPublicaciones: BehaviorSubject<Publicacion[]> = new BehaviorSubject<Publicacion[]>([]);
 
   // Cambia esta URL según el dispositivo en que estés probando
- private apiUrl = 'http://localhost:3001/posts';
+ private apiUrl = 'http://localhost:3000/posts';
  // Cambia 'localhost' por la IP si estás en un dispositivo móvil
 
   constructor(private http: HttpClient) {}
