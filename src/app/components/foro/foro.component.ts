@@ -56,7 +56,6 @@ export class ForoComponent implements OnInit {
   cargarPublicaciones() {
     this.apiService.obtenerPublicaciones().subscribe({
       next: (publicaciones: Publicacion[]) => {
-        console.log('Publicaciones obtenidas:', publicaciones); // Verifica si se imprimen en la consola
         this.publicaciones = publicaciones;
       },
       error: (error) => {
