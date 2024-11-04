@@ -50,4 +50,8 @@ export class IngresoPage implements OnInit {
     this.router.navigate(['/theme']);
   }
 
+  navigateToHome() {
+    this.router.navigate(['/home']);
+  }
+
 }

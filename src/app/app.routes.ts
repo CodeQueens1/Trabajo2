@@ -3,6 +3,7 @@ import { ingresoGuard } from './guards/ingreso-guard.service';
 import { inicioGuard } from './guards/inicio-guard.service';
 import { ForoComponent } from './components/foro/foro.component';
 
+
 export const routes: Routes = [
   {
     path: '',
@@ -17,7 +18,7 @@ export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () => import('./pages/home/home.page').then(m => m.HomePage),
-    canActivate: [inicioGuard]
+    //canActivate: [inicioGuard]
   },
   {
     path: 'theme',
