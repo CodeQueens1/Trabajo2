@@ -1,21 +1,17 @@
-<p>
-  codigoqr works!
-</p>
-
-<ion-content class="ion-padding ion-text-center" class="video-container">
-
-
-  <ion-button class="stop-button" (click)="detenerEscaneoQr()">
+<ion-content class="ion-padding ion-text-center video-container">
+  <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" expand="full" shape="round">
+    <ion-icon slot="start" name="videocam-outline"></ion-icon>
+    Comenzar Escaneo de QR
+  </ion-button>
+  
+  <ion-button *ngIf="escaneando" (click)="detenerEscaneoQr()" expand="full" shape="round">
+    <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
     Detener escaneo de QR
   </ion-button>
-
-  <div class="frame">
-    <video class="video" #video></video>
-    <div class="qr-overlay"></div>
-    <div class="moving-horizontal-line"></div>
-  </div>
-
+  
+  <video #video [hidden]="!escaneando" class="video"></video>
   <canvas #canvas hidden></canvas>
-
+  <div *ngIf="escaneando" class="status-message">Escaneando, por favor coloca el código QR frente a la cámara.</div>
 </ion-content>
+
 

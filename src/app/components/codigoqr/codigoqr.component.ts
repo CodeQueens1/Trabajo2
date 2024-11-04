@@ -22,6 +22,7 @@ export class CodigoqrComponent  implements OnDestroy {
   @Output() stopped: EventEmitter<void> = new EventEmitter<void>(); 
 
   public usuario: Usuario = new Usuario();
+  public escaneando = false;
   datosQR: string = '';
   mediaStream: MediaStream | null = null;//nuevo
   constructor(private authService: AuthService)
@@ -42,12 +43,13 @@ export class CodigoqrComponent  implements OnDestroy {
     this.video.nativeElement.srcObject = this.mediaStream;
     this.video.nativeElement.setAttribute('playsinline', 'true');
     this.video.nativeElement.play();
+    this.escaneando = true;
     requestAnimationFrame(this.verificarVideo.bind(this));
   }
 
   async verificarVideo() {
     if (this.video.nativeElement.readyState === this.video.nativeElement.HAVE_ENOUGH_DATA) {
-      if (this.obtenerDatosQR()) return;
+      if (this.obtenerDatosQR()|| !this.escaneando) return;
       requestAnimationFrame(this.verificarVideo.bind(this));
     } else {
       requestAnimationFrame(this.verificarVideo.bind(this));
@@ -67,6 +69,7 @@ export class CodigoqrComponent  implements OnDestroy {
       const data = qrCode.data;
       console.log(qrCode.data)
       if (data !== '') {
+        this.escaneando = false;
         this.detenerCamara();
         this.scanned.emit(qrCode.data);
         return true;
@@ -79,7 +82,8 @@ export class CodigoqrComponent  implements OnDestroy {
 
   detenerEscaneoQr(): void {
     this.detenerCamara();
-    this.stopped.emit();
+
+    this.escaneando = false;
   }
 
   
