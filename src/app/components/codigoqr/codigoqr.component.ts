@@ -6,13 +6,15 @@ import { EventEmitter } from '@angular/core';
 import jsQR, { QRCode } from 'jsqr';
 import { Usuario } from 'src/app/model/usuario';
 import { AuthService } from 'src/app/services/auth.service';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-codigoqr',
   templateUrl: './codigoqr.component.html',
   styleUrls: ['./codigoqr.component.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [IonicModule, CommonModule, FormsModule,TranslateModule],
 
 })
 export class CodigoqrComponent  implements OnDestroy {
@@ -20,6 +22,11 @@ export class CodigoqrComponent  implements OnDestroy {
   @ViewChild('canvas') private canvas!:ElementRef;
   @Output() scanned: EventEmitter<string> = new EventEmitter<string>();
   @Output() stopped: EventEmitter<void> = new EventEmitter<void>(); 
+  user = {
+    firstName: 'Ana', // Cambia estos valores por los que necesites
+    lastName: 'Torres'
+  };
+
 
   public usuario: Usuario = new Usuario();
   public escaneando = false;
@@ -33,6 +40,7 @@ export class CodigoqrComponent  implements OnDestroy {
       }
     });
     this.comenzarEscaneoQR();
+    
   }
 
   

@@ -3,31 +3,29 @@
     {{ componenteSeleccionado }}
 
     <ion-segment value="codigoqr" 
-    [(ngModel)]="componenteSeleccionado"  
-    (ionChange)="cambiarComponente(componenteSeleccionado)">
-<!--componente que se esta utilizando y evento que se realizara cuando se apriete el boton -->
-   
+                 [(ngModel)]="componenteSeleccionado"  
+                 (ionChange)="cambiarComponente(componenteSeleccionado)">
 
-    <ion-segment-button value="codigoqr">
-      <ion-icon name="qr-code-outline"></ion-icon>
-      Inicio
-    </ion-segment-button>
+      <ion-segment-button value="codigoqr">
+        <img src="assets/icon/inicio.png" alt="Inicio" style="width: 24px; height: 24px;"> <!-- Asegúrate de que la ruta sea correcta -->
+        Inicio
+      </ion-segment-button>
 
-    <ion-segment-button value="miclase">
-      <ion-icon name="school-outline"></ion-icon>
-      Mi clase
-    </ion-segment-button>
+      <ion-segment-button value="miclase">
+        <img src="assets/icon/MiClase.png" alt="Mi clase" style="width: 24px; height: 24px;">
+        Mi clase
+      </ion-segment-button>
 
-    <ion-segment-button value="foro">
-      <ion-icon name="pencil-outline"></ion-icon>
-      Foro
-    </ion-segment-button>
+      <ion-segment-button value="foro">
+        <img src="assets/icon/foro.png" alt="Foro" style="width: 24px; height: 24px;">
+        Foro
+      </ion-segment-button>
 
-    <ion-segment-button value="misdatos">
-      <ion-icon name="grid-outline"></ion-icon>
-      Mis datos
-    </ion-segment-button>
+      <ion-segment-button value="misdatos">
+        <img src="assets/icon/datos.png" alt="Mis datos" style="width: 24px; height: 24px;">
+        Mis datos
+      </ion-segment-button>
 
-  </ion-segment>
+    </ion-segment>
   </ion-toolbar>
 </ion-footer>

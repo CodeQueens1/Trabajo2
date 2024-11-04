@@ -1,4 +1,10 @@
 <ion-content class="ion-padding ion-text-center video-container">
+  
+  <div class="ion-text-center">
+    <h1> Bienvenido(a) </h1>
+    <h1> {{ user.firstName}} {{ user.lastName }} </h1>
+  </div>
+
   <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" expand="full" shape="round">
     Comenzar Escaneo de QR
   </ion-button>
