@@ -16,3 +16,12 @@ video {
 .status-message {
   margin-top: 10px;       /* Espaciado superior para el mensaje de estado */
 }
+
+ion-button {
+  width: 100%;            /* Los botones ocupan el 100% del contenedor */
+    /* Asegúrate de que los botones no excedan el tamaño del video */
+  --padding-start: 8px;  /* Ajusta el relleno izquierdo */
+  --padding-end: 8px;    /* Ajusta el relleno derecho */
+  margin: 10px 0;        /* Espaciado entre botones */
+
+}
