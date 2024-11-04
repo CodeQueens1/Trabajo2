@@ -7,7 +7,7 @@ import { gridOutline, homeOutline, pencilOutline, schoolOutline } from 'ionicons
 import { CodigoqrComponent } from 'src/app/components/codigoqr/codigoqr.component';
 import { MiclaseComponent } from 'src/app/components/miclase/miclase.component';
 import { ForoComponent } from 'src/app/components/foro/foro.component';
-// import { MisdatosComponent } from 'src/app/components/misdatos/misdatos.component';
+
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
 import { AuthService } from 'src/app/services/auth.service';
@@ -21,7 +21,9 @@ import { Asistencia } from 'src/app/model/asistencia';
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
   standalone: true,
-  imports: [IonFooter, IonSegment, IonIcon, IonButton, IonSegmentButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, CodigoqrComponent, MiclaseComponent,ForoComponent,HeaderComponent,FooterComponent]
+  imports: [IonFooter, IonSegment, IonIcon, IonButton, IonSegmentButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, 
+    FormsModule, CodigoqrComponent, MiclaseComponent,
+    ForoComponent,HeaderComponent,FooterComponent,MisdatosComponent]
 })
 export class InicioPage {
   @ViewChild(FooterComponent) footer!: FooterComponent;
