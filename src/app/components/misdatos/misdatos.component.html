@@ -12,9 +12,6 @@
 
   <div class="book">
     <ion-content [fullscreen]="true" class="ion-padding-horizontal page">
-      <ion-toolbar class="ion-padding-top">
-        <h1 class="ion-text-center"></h1>
-      </ion-toolbar>
   
       <ion-toolbar>
         <h4 class="ion-text-center">Información Adicional</h4>
@@ -37,8 +34,13 @@
       </ion-item>
   
       <ion-item #itemPreguntaSecreta>
-        <ion-input [(ngModel)]="usuario.preguntaSecreta" label="Pregunta Secreta" placeholder="Ej: Torres"></ion-input>
+        <ion-input [(ngModel)]="usuario.preguntaSecreta" label="Pregunta Secreta" labelPlacement="floating" placeholder="Ej: Torres"></ion-input>
       </ion-item>
+
+      <ion-item #itemPreguntaSecreta>
+        <ion-input [(ngModel)]="usuario.respuestaSecreta" label="Repuesta Secreta" labelPlacement="floating" placeholder="Ej: perro"></ion-input>
+      </ion-item>
+  
   
       <ion-item #itemEducacion>
         <ion-label position="floating" class="font-size-16">Educación</ion-label>
@@ -49,7 +51,7 @@
         </ion-select>
       </ion-item>
    
-       <!-- <ion-item #itemFechaNacimiento>
+        <ion-item #itemFechaNacimiento>
         <table>
           <tr>
             <td class="font-size 12">Nacimiento</td>
@@ -62,11 +64,21 @@
             </td>
           </tr>
         </table>
-      </ion-item>  -->
+      </ion-item> 
   
-      <ion-item #itemPreguntaSecreta>
+      <ion-item #itemContraseña>
         <ion-input [(ngModel)]="usuario.password" label="Contraseña" labelPlacement="floating" type="password"></ion-input>
       </ion-item>
+
+        
+      <ion-item #itemRepetirContraseña>
+        <ion-input [(ngModel)]="usuario.password" label="Repetir Contraseña" labelPlacement="floating" type="password"></ion-input>
+      </ion-item>
+
+      <ion-button shape="round" size="small" >
+        Actualizar usuario
+      </ion-button>
+  
   
 
   
