@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
@@ -15,6 +15,8 @@ import { Publicacion } from '../../model/publicacion';
   imports: [IonicModule, FormsModule, CommonModule]
 })
 export class ForoComponent implements OnInit {
+  @ViewChild('formulario') formularioElement!: ElementRef;
+
   publicaciones: Publicacion[] = [];
   nuevaPublicacion: Publicacion = new Publicacion();
   editando: boolean = false;
@@ -34,8 +36,8 @@ export class ForoComponent implements OnInit {
   }
 
   cerrarSesion() {
-    this.authService.logout(); // Llama al método de cierre de sesión
-    this.router.navigate(['/login']); // Redirige a la página de inicio de sesión
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
   onSubmit() {
@@ -45,8 +47,9 @@ export class ForoComponent implements OnInit {
       } else {
         const publicacionParaEnviar = { ...this.nuevaPublicacion };
         delete publicacionParaEnviar.id;
-        this.apiService.crearPublicacion(publicacionParaEnviar).subscribe(() => {
-          this.cargarPublicaciones();
+        this.apiService.crearPublicacion(publicacionParaEnviar).subscribe((response: Publicacion) => {
+          this.nuevaPublicacion.id = response.id;
+          this.publicaciones.unshift({ ...this.nuevaPublicacion });
           this.limpiarFormulario();
         });
       }
@@ -56,14 +59,13 @@ export class ForoComponent implements OnInit {
   cargarPublicaciones() {
     this.apiService.obtenerPublicaciones().subscribe({
       next: (publicaciones: Publicacion[]) => {
-        this.publicaciones = publicaciones;
+        this.publicaciones = publicaciones.reverse();
       },
       error: (error) => {
         console.error('Error al cargar publicaciones:', error);
       }
     });
   }
-  
 
   actualizarPublicacion() {
     this.apiService.actualizarPublicacion(this.nuevaPublicacion).subscribe(() => {
@@ -101,5 +103,10 @@ export class ForoComponent implements OnInit {
   editarPublicacion(publicacion: Publicacion) {
     this.nuevaPublicacion = { ...publicacion };
     this.editando = true;
+
+    // Desplaza la página hacia el formulario
+    setTimeout(() => {
+      document.getElementById('formulario')?.scrollIntoView({ behavior: 'smooth' });
+    }, 0);
   }
 }

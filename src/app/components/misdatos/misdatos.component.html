@@ -30,6 +30,12 @@
       <ion-item #itemCorreo>
         <ion-input [(ngModel)]="usuario.correo" label="Correo" labelPlacement="floating" placeholder="Ej: Torres"></ion-input>
       </ion-item>
+
+      <ion-item>
+        <ion-input label="Dirección" labelPlacement="floating" value="Av. Providencia 123" readonly></ion-input>
+      </ion-item>
+      
+       
   
       <ion-item #itemPreguntaSecreta>
         <ion-input [(ngModel)]="usuario.preguntaSecreta" label="Pregunta Secreta" labelPlacement="floating" placeholder="Ej: Torres"></ion-input>
@@ -38,7 +44,6 @@
       <ion-item #itemPreguntaSecreta>
         <ion-input [(ngModel)]="usuario.respuestaSecreta" label="Repuesta Secreta" labelPlacement="floating" placeholder="Ej: perro"></ion-input>
       </ion-item>
-  
   
       <ion-item #itemEducacion>
         <ion-label position="floating" class="font-size-16">Educación</ion-label>
