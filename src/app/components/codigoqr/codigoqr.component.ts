@@ -22,10 +22,6 @@ export class CodigoqrComponent  implements OnDestroy {
   @ViewChild('canvas') private canvas!:ElementRef;
   @Output() scanned: EventEmitter<string> = new EventEmitter<string>();
   @Output() stopped: EventEmitter<void> = new EventEmitter<void>(); 
-  user = {
-    firstName: 'Ana', // Cambia estos valores por los que necesites
-    lastName: 'Torres'
-  };
 
 
   public usuario: Usuario = new Usuario();
