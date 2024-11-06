@@ -29,8 +29,8 @@ export class MiclaseComponent  {
 
   }
 
-//  ngOnDestroy(): void {
-//    this.subs.unsubscribe();
-//  }
+ngOnDestroy(): void {
+ this.subs.unsubscribe();
+ }
 
 }
