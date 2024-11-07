@@ -46,6 +46,10 @@ export class IngresoPage implements OnInit {
     this.selectLanguage.setCurrentLanguage();
   }
 
+  recuperarContrasena(){
+    this.router.navigate(['/correo'])
+  }
+
   navigateTheme() {
     this.router.navigate(['/theme']);
   }

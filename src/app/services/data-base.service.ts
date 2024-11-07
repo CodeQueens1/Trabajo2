@@ -4,6 +4,7 @@ import { SQLiteService } from './sqlite.service';
 import { Usuario } from '../model/usuario';
 import { BehaviorSubject } from 'rxjs';
 import { NivelEducacional } from '../model/nivel-educacional';
+import { showAlertError } from '../tools/message-functions';
 
 @Injectable({
   providedIn: 'root'
@@ -146,5 +147,20 @@ export class DataBaseService {
       [cuenta])).values as Usuario[];
     return usuarios[0];
   }
+
+  async buscarUsuarioPorCorreo(correo: string): Promise<Usuario | undefined> {
+    console.log('Buscando usuario con correo:', correo);
+    try {
+      const usuarios: Usuario[]=(await this.db.query(
+        'SELECT * FROM USUARIO WHERE correo = ?;',
+        [correo])).values as Usuario[];
+        console.log('Usuarios encontrados:', usuarios);
+        return usuarios[0];
+    } catch (error) {
+      showAlertError('DataBaseService.buscarUsuarioPorCorreo', error);
+      return undefined;
+    }
+  }
+
 
 }

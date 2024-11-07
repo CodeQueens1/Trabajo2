@@ -28,7 +28,7 @@ export class HeaderComponent {
 
   logout() {
     this.authService.logout(); // Cierra la sesión
-    this.navCtrl.navigateRoot('/login'); // Redirige al usuario a la página de inicio de sesión
+    this.navCtrl.navigateRoot('/ingreso'); // Redirige al usuario a la página de inicio de sesión
   }
   
 

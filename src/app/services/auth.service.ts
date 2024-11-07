@@ -61,13 +61,17 @@ usuarioAutenticado = new BehaviorSubject<Usuario | null>(null);
     await this.storage.get(this.keyUsuario).then(async (usuarioAutenticado) => {
       if (usuarioAutenticado) {
         this.usuarioAutenticado.next(usuarioAutenticado);
+        console.log('Usuario autenticado encontrado:', this.usuarioAutenticado.value);
         this.primerInicioSesion.next(false); // Avisar que no es el primer inicio de sesión
         this.router.navigate(['/inicio']);
       } else {
         await this.bd.buscarUsuarioValido(cuenta, password).then(async (usuario: Usuario | undefined) => {
+          console.log('Usuario validado:', usuario);
           if (usuario) {
             showToast(`¡Bienvenido(a) ${usuario.nombre} ${usuario.apellido}!`);
             this.guardarUsuarioAutenticado(usuario);
+            console.log('Usuario guardado en el Storage:', usuario);
+          console.log('Estado del usuario autenticado (BehaviorSubject):', this.usuarioAutenticado.value);
             this.primerInicioSesion.next(true); // Avisar que es el primer inicio de sesión
             this.router.navigate(['/inicio']);
           } else {
@@ -83,7 +87,7 @@ usuarioAutenticado = new BehaviorSubject<Usuario | null>(null);
     this.leerUsuarioAutenticado().then((usuario) => {
       if (usuario) {
         showToast(`¡Hasta pronto ${usuario.nombre} ${usuario.apellido}!`);
-        this.eliminarUsuarioAutenticado(usuario);
+        // this.eliminarUsuarioAutenticado(usuario);
       }
       this.router.navigate(['/ingreso']); // Cambia '/ingresoi' a '/ingreso' si es necesario
     });
