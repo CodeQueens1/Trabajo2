@@ -7,11 +7,11 @@
       <ion-card-subtitle>Paso 2: Responde la pregunta secreta</ion-card-subtitle>
 
       <ion-item>
-        <ion-label>{{ usuario?.nombre }} {{ usuario?.apellido }}</ion-label>
+        <ion-label>{{ usuario.nombre }} {{ usuario.apellido }}</ion-label>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">{{ usuario?.preguntaSecreta }}</ion-label>
+        <ion-label position="floating">{{ usuario.preguntaSecreta }}</ion-label>
         <br>
         <ion-input [(ngModel)]="respuesta" type="text" placeholder="Escribe aquí tu respuesta"></ion-input>
       </ion-item>
