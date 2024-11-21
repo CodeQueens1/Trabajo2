@@ -58,4 +58,8 @@ export class IngresoPage implements OnInit {
     this.router.navigate(['/home']);
   }
 
+  navegateRegistrarme(){
+    this.router.navigate(['/registrarme'])
+  }
+
 }
