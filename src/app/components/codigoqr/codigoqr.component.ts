@@ -1,3 +1,4 @@
+
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, Output, ViewChild, OnDestroy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -7,6 +8,7 @@ import jsQR, { QRCode } from 'jsqr';
 import { Usuario } from 'src/app/model/usuario';
 import { AuthService } from 'src/app/services/auth.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 
 @Component({
@@ -36,19 +38,51 @@ export class CodigoqrComponent  implements OnDestroy {
       }
     });
     this.comenzarEscaneoQR();
-    
+  }
+  
+  private esDispositivoMovil(): boolean {
+    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   }
 
+  private showasistenciaComponent(qrData: any) {
+    // Lógica para mostrar el componente de asistencia
+    console.log("Datos de QR recibidos:", qrData);
+    // Agrega aquí la lógica específica que necesitas
+  }
   
+  
+
   public async comenzarEscaneoQR() {
-    this.mediaStream = await navigator.mediaDevices.getUserMedia({
-      video: {facingMode: 'environment'}
-    });
-    this.video.nativeElement.srcObject = this.mediaStream;
-    this.video.nativeElement.setAttribute('playsinline', 'true');
-    this.video.nativeElement.play();
-    this.escaneando = true;
-    requestAnimationFrame(this.verificarVideo.bind(this));
+    if (this.esDispositivoMovil()) {
+      try {
+        // Pedir permiso para usar la cámara
+        await BarcodeScanner.checkPermission({ force: true });
+        
+        // Ocultar la vista de la app para que se muestre la cámara
+        BarcodeScanner.hideBackground();
+
+        // Iniciar el escaneo
+        const qrData = await BarcodeScanner.startScan();
+        
+        if (qrData.hasContent) {
+          this.escaneando = false;
+          this.showasistenciaComponent(qrData.content);
+        }
+      } catch (error) {
+        console.error("Error al escanear QR", error);
+      } finally {
+        BarcodeScanner.showBackground();
+      }
+    } else {
+      this.mediaStream = await navigator.mediaDevices.getUserMedia({
+        video: {facingMode: 'environment'}
+      });
+      this.video.nativeElement.srcObject = this.mediaStream;
+      this.video.nativeElement.setAttribute('playsinline', 'true');
+      this.video.nativeElement.play();
+      this.escaneando = true;
+      requestAnimationFrame(this.verificarVideo.bind(this));
+    }
   }
 
   async verificarVideo() {
@@ -95,21 +129,12 @@ export class CodigoqrComponent  implements OnDestroy {
     this.detenerCamara();
   }
 
-
-
-
+  
   detenerCamara() {
     if (this.mediaStream) {
       this.mediaStream.getTracks().forEach(track => track.stop()); // Detén todas las pistas de video
       this.mediaStream = null; // Limpia el flujo de medios
     }
   }
-
-
-
-
-
-
-
 
 }
